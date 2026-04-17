@@ -39,6 +39,8 @@ runcmd:
 
   - chmod 600 /root/.config/scw/config.yaml
 
+  - pip3 install scaleway --break-system-packages
+
 ansible:
   package_name: ansible-core
   install_method: distro
