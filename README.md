@@ -9,3 +9,11 @@ software forge.
 $ brew install mise
 $ mise install
 ```
+
+## Plan and apply
+
+```shell
+$ mise run init
+$ mise run plan
+$ mise run apply
+```

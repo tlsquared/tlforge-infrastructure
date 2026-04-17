@@ -1,2 +1,17 @@
 [tools]
 opentofu = "1.11"
+
+[env]
+SCW_ACCESS_KEY = { required = true }
+SCW_SECRET_KEY = { required = true }
+AWS_ACCESS_KEY_ID = { required = true }
+AWS_SECRET_ACCESS_KEY = { required = true }
+
+[tasks.init]
+run = "tofu init -reconfigure"
+
+[tasks.plan]
+run = "tofu plan"
+
+[tasks.apply]
+run = "tofu apply"
