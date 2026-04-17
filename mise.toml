@@ -2,16 +2,26 @@
 opentofu = "1.11"
 
 [env]
-SCW_ACCESS_KEY = { required = true }
-SCW_SECRET_KEY = { required = true }
-AWS_ACCESS_KEY_ID = { required = true }
-AWS_SECRET_ACCESS_KEY = { required = true }
+SCW_ACCESS_KEY = { required = true, redact = true }
+SCW_SECRET_KEY = { required = true, redact = true }
 
 [tasks.init]
 run = "tofu init -reconfigure"
+env = {
+    AWS_ACCESS_KEY_ID = "{{ env.SCW_ACCESS_KEY }}",
+    AWS_SECRET_ACCESS_KEY = "{{ env.SCW_SECRET_KEY }}"
+}
 
 [tasks.plan]
 run = "tofu plan"
+env = {
+    AWS_ACCESS_KEY_ID = "{{ env.SCW_ACCESS_KEY }}",
+    AWS_SECRET_ACCESS_KEY = "{{ env.SCW_SECRET_KEY }}"
+}
 
 [tasks.apply]
 run = "tofu apply"
+env = {
+    AWS_ACCESS_KEY_ID = "{{ env.SCW_ACCESS_KEY }}",
+    AWS_SECRET_ACCESS_KEY = "{{ env.SCW_SECRET_KEY }}"
+}

@@ -1,7 +1,10 @@
 # Forge infrastructure
 
 This repository contains infrastructure as code configuration for the
-software forge.
+software forge running on [Scaleway][scaleway] using [Forgejo][forgejo].
+
+[scaleway]: https://www.scaleway.com/
+[forgejo]: https://forgejo.org/
 
 ## Dependencies
 
@@ -9,6 +12,25 @@ software forge.
 $ brew install mise
 $ mise install
 ```
+
+## Setup
+
+1. Create a `mise.local.toml` file containing your Scaleway access key and
+   secret key:
+
+   ```toml
+   [env]
+   SCW_ACCESS_KEY = "..."
+   SCW_SECRET_KEY = "..."
+   ```
+
+2. Create a `terraform.tfvars` file containing your variable values:
+
+   ```terraform
+   scaleway_bucket = "..."
+   scaleway_organization_id = "..."
+   scaleway_project_id = "..."
+   ```
 
 ## Plan and apply
 
