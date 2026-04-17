@@ -3,6 +3,8 @@
 package_update: true
 package_upgrade: true
 
+packages: [git]
+
 fs_setup:
   - device: /dev/sdb
     filesystem: ext4
@@ -10,3 +12,7 @@ fs_setup:
 
 mounts:
   - [sdb, /mnt/data-volume, auto, defaults]
+
+ansible:
+  package_name: ansible-core
+  install_method: distro
