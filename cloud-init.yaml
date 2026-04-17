@@ -3,7 +3,7 @@
 package_update: true
 package_upgrade: true
 
-packages: [git]
+packages: [git, jq]
 
 fs_setup:
   - device: /dev/sdb
@@ -12,6 +12,32 @@ fs_setup:
 
 mounts:
   - [sdb, /mnt/data-volume, auto, defaults]
+
+runcmd:
+  - mkdir -p /root/.config/scw
+
+  - |
+    access_key=$(curl -s --local-port 1-1023 http://169.254.42.42/user_data/scw-access-key)
+    secret_key=$(curl -s --local-port 1-1023 http://169.254.42.42/user_data/scw-secret-key)
+
+    conf=$(curl -s http://169.254.42.42/conf?format=json)
+
+    organization=$(echo "$conf" | jq -r '.organization')
+    project=$(echo "$conf" | jq -r '.project')
+    zone=$(echo "$conf" | jq -r '.zone')
+    region=${zone::-2}
+
+    cat > /root/.config/scw/config.yaml <<EOF
+    access_key: $access_key
+    secret_key: $secret_key
+    default_organization_id: $organization
+    default_project_id: $project
+    default_region: $region
+    default_zone: $zone
+    api_url: https://api.scaleway.com
+    EOF
+
+  - chmod 600 /root/.config/scw/config.yaml
 
 ansible:
   package_name: ansible-core
