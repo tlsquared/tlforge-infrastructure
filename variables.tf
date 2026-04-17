@@ -15,10 +15,12 @@ variable "scaleway_project_id" {
 
 variable "scaleway_region" {
   type     = string
+  default  = "fr-par"
   nullable = false
 }
 
 variable "scaleway_zone" {
   type     = string
+  default  = "fr-par-1"
   nullable = false
 }
