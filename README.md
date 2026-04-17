@@ -24,7 +24,7 @@ $ mise install
    SCW_SECRET_KEY = "..."
    ```
 
-2. Create a `terraform.tfvars` file containing your variable values:
+2. Create a `terraform/terraform.tfvars` file containing your variable values:
 
    ```terraform
    scaleway_bucket = "..."
