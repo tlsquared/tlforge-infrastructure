@@ -6,6 +6,22 @@ resource "scaleway_instance_ip" "public_ipv6" {
   type = "routed_ipv6"
 }
 
+resource "scaleway_secret" "internal_token" {
+  name = "forgejo-internal-token"
+}
+
+resource "scaleway_secret" "jwt_secret" {
+  name = "forgejo-jwt-secret"
+}
+
+resource "scaleway_secret" "lfs_jwt_secret" {
+  name = "forgejo-lfs-jwt-secret"
+}
+
+resource "scaleway_secret" "secret_key" {
+  name = "forgejo-secret-key"
+}
+
 resource "scaleway_block_volume" "data" {
   name       = "forge-data"
   iops       = 5000
