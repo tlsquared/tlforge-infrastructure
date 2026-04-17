@@ -62,7 +62,8 @@ resource "scaleway_iam_policy" "main_instance_secret_manager_read_only" {
     project_ids = [var.scaleway_project_id]
 
     permission_set_names = [
-      "SecretManagerReadOnly"
+      "SecretManagerReadOnly",
+      "SecretManagerSecretAccess"
     ]
   }
 }
