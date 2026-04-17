@@ -1,4 +1,4 @@
-# Forge infrastructure
+# Forge — Infrastructure
 
 This repository contains infrastructure as code configuration for the
 software forge running on [Scaleway][scaleway] using [Forgejo][forgejo].
