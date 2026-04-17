@@ -6,21 +6,21 @@ SCW_ACCESS_KEY = { required = true, redact = true }
 SCW_SECRET_KEY = { required = true, redact = true }
 
 [tasks.init]
-run = "tofu -chdir=terraform init -reconfigure"
+run = "tofu init -reconfigure"
 env = {
     AWS_ACCESS_KEY_ID = "{{ env.SCW_ACCESS_KEY }}",
     AWS_SECRET_ACCESS_KEY = "{{ env.SCW_SECRET_KEY }}"
 }
 
 [tasks.plan]
-run = "tofu -chdir=terraform plan"
+run = "tofu plan"
 env = {
     AWS_ACCESS_KEY_ID = "{{ env.SCW_ACCESS_KEY }}",
     AWS_SECRET_ACCESS_KEY = "{{ env.SCW_SECRET_KEY }}"
 }
 
 [tasks.apply]
-run = "tofu -chdir=terraform apply"
+run = "tofu apply"
 env = {
     AWS_ACCESS_KEY_ID = "{{ env.SCW_ACCESS_KEY }}",
     AWS_SECRET_ACCESS_KEY = "{{ env.SCW_SECRET_KEY }}"
