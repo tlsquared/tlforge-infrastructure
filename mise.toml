@@ -1,8 +1,5 @@
 [tools]
-ansible = { version = "13.5", pipx_args = "--include-deps --preinstall bcrypt==4.3.0 --preinstall passlib", uvx = "false" }
 opentofu = "1.11"
-pipx = "1.11"
-python = "3.14"
 
 [env]
 SCW_ACCESS_KEY = { required = true, redact = true }
