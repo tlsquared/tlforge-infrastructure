@@ -3,7 +3,7 @@
 package_update: true
 package_upgrade: true
 
-packages: [git, jq]
+packages: [git, jq, python3-pip]
 
 fs_setup:
   - device: /dev/sdb
@@ -17,14 +17,14 @@ runcmd:
   - mkdir -p /root/.config/scw
 
   - |
-    access_key=$(curl -s --local-port 1-1023 http://169.254.42.42/user_data/scw-access-key)
-    secret_key=$(curl -s --local-port 1-1023 http://169.254.42.42/user_data/scw-secret-key)
+    access_key=$(scw-userdata scw-access-key)
+    secret_key=$(scw-userdata scw-secret-key)
 
-    conf=$(curl -s http://169.254.42.42/conf?format=json)
+    metadata=$(scw-metadata-json)
 
-    organization=$(echo "$conf" | jq -r '.organization')
-    project=$(echo "$conf" | jq -r '.project')
-    zone=$(echo "$conf" | jq -r '.zone')
+    organization=$(echo "$metadata" | jq -r '.organization')
+    project=$(echo "$metadata" | jq -r '.project')
+    zone=$(echo "$metadata" | jq -r '.zone')
     region=${zone::-2}
 
     cat > /root/.config/scw/config.yaml <<EOF
@@ -42,5 +42,10 @@ runcmd:
 ansible:
   package_name: ansible-core
   install_method: distro
+  galaxy:
+    actions:
+      - command: install
+        args:
+          - scaleway.scaleway
   pull:
     - url: https://github.com/tlsquared/forge-ansible.git
