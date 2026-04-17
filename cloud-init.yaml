@@ -16,3 +16,5 @@ mounts:
 ansible:
   package_name: ansible-core
   install_method: distro
+  pull:
+    - url: https://github.com/tlsquared/forge-ansible.git
