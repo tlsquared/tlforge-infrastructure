@@ -46,6 +46,6 @@ resource "scaleway_secret" "smtp_password" {
 }
 
 resource "scaleway_secret_version" "smtp_password" {
-  secret_id = scaleway_secret.smtp_user.id
+  secret_id = scaleway_secret.smtp_password.id
   data_wo   = scaleway_tem_domain.main.smtps_auth_user
 }
