@@ -50,4 +50,4 @@ ansible:
         args:
           - scaleway.scaleway
   pull:
-    - url: https://github.com/tlsquared/forge-ansible.git
+    - url: https://tlforge.dev/tlsquared/tlforge-ansible.git
