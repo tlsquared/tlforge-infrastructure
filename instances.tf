@@ -1,27 +1,3 @@
-resource "scaleway_instance_ip" "public_ipv4" {
-  type = "routed_ipv4"
-}
-
-resource "scaleway_instance_ip" "public_ipv6" {
-  type = "routed_ipv6"
-}
-
-resource "scaleway_secret" "internal_token" {
-  name = "forgejo-internal-token"
-}
-
-resource "scaleway_secret" "jwt_secret" {
-  name = "forgejo-jwt-secret"
-}
-
-resource "scaleway_secret" "lfs_jwt_secret" {
-  name = "forgejo-lfs-jwt-secret"
-}
-
-resource "scaleway_secret" "secret_key" {
-  name = "forgejo-secret-key"
-}
-
 resource "scaleway_block_volume" "data" {
   name       = "forge-data"
   iops       = 5000
@@ -48,27 +24,6 @@ resource "scaleway_instance_security_group" "main" {
     action = "accept"
     port   = "443"
   }
-}
-
-resource "scaleway_iam_application" "main_instance" {
-  name = "forge-main-instance"
-}
-
-resource "scaleway_iam_policy" "main_instance_secret_manager_read_only" {
-  name           = "forge-main-instance-secret-manager-read-only"
-  application_id = scaleway_iam_application.main_instance.id
-
-  rule {
-    project_ids = [var.scaleway_project_id]
-    permission_set_names = [
-      "SecretManagerReadOnly",
-      "SecretManagerSecretAccess"
-    ]
-  }
-}
-
-resource "scaleway_iam_api_key" "main_instance" {
-  application_id = scaleway_iam_application.main_instance.id
 }
 
 resource "scaleway_instance_server" "main" {
