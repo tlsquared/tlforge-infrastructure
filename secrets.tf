@@ -14,12 +14,8 @@ resource "scaleway_secret" "secret_key" {
   name = "forgejo-secret-key"
 }
 
-resource "scaleway_secret" "signing_public_key" {
-  name = "signing-public-key"
-}
-
-resource "scaleway_secret" "signing_private_key" {
-  name = "signing-private-key"
+resource "scaleway_secret" "signing_key" {
+  name = "signing-key"
 }
 
 resource "scaleway_secret" "smtp_host" {
