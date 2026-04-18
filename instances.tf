@@ -1,11 +1,11 @@
 resource "scaleway_block_volume" "data" {
-  name       = "forge-data"
+  name       = "tlforge-main-data"
   iops       = 5000
   size_in_gb = 10
 }
 
 resource "scaleway_instance_security_group" "main" {
-  name = "forge-main"
+  name = "tlforge-main"
 
   inbound_default_policy  = "drop"
   outbound_default_policy = "accept"
@@ -27,7 +27,7 @@ resource "scaleway_instance_security_group" "main" {
 }
 
 resource "scaleway_instance_server" "main" {
-  name = "forge-main"
+  name = "tlforge-main"
 
   type  = "DEV1-S"
   image = "debian_trixie"
@@ -36,7 +36,7 @@ resource "scaleway_instance_server" "main" {
   security_group_id = scaleway_instance_security_group.main.id
 
   root_volume {
-    name       = "forge-system"
+    name       = "tlforge-main-system"
     size_in_gb = 10
   }
 

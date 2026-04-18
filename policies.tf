@@ -1,9 +1,9 @@
 resource "scaleway_iam_application" "main_instance" {
-  name = "forge-main-instance"
+  name = "tlforge-main-instance"
 }
 
 resource "scaleway_iam_policy" "main_instance_secret_manager_read_only" {
-  name           = "forge-main-instance-secret-manager-read-only"
+  name           = "tlforge-main-instance-secret-manager-read-only"
   application_id = scaleway_iam_application.main_instance.id
 
   rule {
