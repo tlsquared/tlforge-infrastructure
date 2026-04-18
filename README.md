@@ -16,26 +16,28 @@ $ mise install
 
 ## Setup
 
-1. Create a `mise.local.toml` file containing your Scaleway access key and
-   secret key:
+Create a `mise.local.toml` file containing your Scaleway access key, secret
+key, organization ID and project ID:
 
-   ```toml
-   [env]
-   SCW_ACCESS_KEY = "..."
-   SCW_SECRET_KEY = "..."
-   ```
+```toml
+[env]
+SCW_ACCESS_KEY = "..."
+SCW_SECRET_KEY = "..."
+SCW_DEFAULT_ORGANIZATION_ID = "..."
+SCW_DEFAULT_PROJECT_ID = "..."
+```
 
-2. Create a `terraform.tfvars` file containing your variable values:
-
-   ```terraform
-   scaleway_organization_id = "..."
-   scaleway_project_id = "..."
-   ```
-
-## Plan and apply
+Then initialize the project:
 
 ```shell
 $ mise run init
+```
+
+## Plan and apply
+
+Run the following to plan and apply any changes to the infrastructure.
+
+```shell
 $ mise run plan
 $ mise run apply
 ```
