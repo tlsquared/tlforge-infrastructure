@@ -15,7 +15,7 @@ write_files:
           DOCKER_HOST: tcp://dind_container.docker.internal:2375
         labels:
           - ubuntu-22.04:docker://ghcr.io/catthehacker/ubuntu:act-22.04
-          - ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-22.04
+          - ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-latest
       container:
         docker_host: 'tcp://127.0.0.1:2376'
         options: '--add-host=dind_container.docker.internal:host-gateway'
