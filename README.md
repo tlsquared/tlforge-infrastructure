@@ -1,8 +1,9 @@
-# Forge — Infrastructure
+# TL Forge — Infrastructure
 
-This repository contains infrastructure as code configuration for the
-software forge running on [Scaleway][scaleway] using [Forgejo][forgejo].
+This repository contains infrastructure as code configuration for
+[TL Forge][tlforge] running on [Scaleway][scaleway] using [Forgejo][forgejo].
 
+[tlforge]: https://tlforge.dev/
 [scaleway]: https://www.scaleway.com/
 [forgejo]: https://forgejo.org/
 
