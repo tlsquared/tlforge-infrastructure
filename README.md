@@ -28,7 +28,6 @@ $ mise install
 2. Create a `terraform.tfvars` file containing your variable values:
 
    ```terraform
-   scaleway_bucket = "..."
    scaleway_organization_id = "..."
    scaleway_project_id = "..."
    ```

@@ -6,11 +6,11 @@ terraform {
   }
 
   backend "s3" {
-    bucket = var.scaleway_bucket
-    key    = "forge-infrastructure.tfstate"
-    region = var.scaleway_region
+    bucket = "tlsquared-tlforge-tfstate"
+    key    = "tlforge.tfstate"
+    region = "fr-par"
 
-    endpoints = { s3 = "https://s3.${var.scaleway_region}.scw.cloud" }
+    endpoints = { s3 = "https://s3.fr-par.scw.cloud" }
 
     skip_credentials_validation = true
     skip_region_validation      = true

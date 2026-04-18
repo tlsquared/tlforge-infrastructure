@@ -1,8 +1,3 @@
-variable "scaleway_bucket" {
-  type      = string
-  nullable  = false
-}
-
 variable "scaleway_organization_id" {
   type     = string
   nullable = false
