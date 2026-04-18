@@ -58,3 +58,9 @@ resource "scaleway_domain_record" "ipv6" {
   data     = scaleway_instance_ip.public_ipv6.address
   ttl      = 3600
 }
+
+resource "scaleway_tem_domain" "main" {
+  name       = "tlforge.dev"
+  accept_tos = true
+  autoconfig = true
+}
