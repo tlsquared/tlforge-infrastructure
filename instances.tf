@@ -7,6 +7,7 @@ resource "scaleway_block_volume" "data" {
 resource "scaleway_instance_security_group" "main" {
   name = "tlforge-main"
 
+  enable_default_security = false
   inbound_default_policy  = "drop"
   outbound_default_policy = "accept"
 
@@ -23,11 +24,6 @@ resource "scaleway_instance_security_group" "main" {
   inbound_rule {
     action = "accept"
     port   = "443"
-  }
-
-  outbound_rule {
-    action = "accept"
-    port   = scaleway_tem_domain.main.smtp_port
   }
 }
 
