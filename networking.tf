@@ -1,11 +1,3 @@
-resource "scaleway_instance_ip" "public_ipv4" {
-  type = "routed_ipv4"
-}
-
-resource "scaleway_instance_ip" "public_ipv6" {
-  type = "routed_ipv6"
-}
-
 locals {
   domains = [
     {
@@ -63,4 +55,12 @@ resource "scaleway_tem_domain" "main" {
   name       = "tlforge.dev"
   accept_tos = true
   autoconfig = true
+}
+
+resource "scaleway_instance_ip" "public_ipv4" {
+  type = "routed_ipv4"
+}
+
+resource "scaleway_instance_ip" "public_ipv6" {
+  type = "routed_ipv6"
 }

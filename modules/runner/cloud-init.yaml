@@ -1,0 +1,34 @@
+#cloud-config
+
+package_update: true
+package_upgrade: true
+
+packages: [git]
+
+write_files:
+  - path: /etc/runner-config.yml
+    owner: root:root
+    permissions: "0644"
+    content: |
+      runner:
+        env:
+          DOCKER_HOST: tcp://dind_container.docker.internal:2375
+        labels:
+          - ubuntu-22.04:docker://ghcr.io/catthehacker/ubuntu:act-22.04
+          - ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-22.04
+      container:
+        docker_host: 'tcp://127.0.0.1:2376'
+        options: '--add-host=dind_container.docker.internal:host-gateway'
+      server:
+        connections:
+          tlforge:
+            url: https://tlforge.dev
+            uuid: ${uuid}
+            token: ${token}
+
+ansible:
+  package_name: ansible-core
+  install_method: distro
+  pull:
+    - url: https://tlforge.dev/tlsquared/tlforge-ansible.git
+      playbook_names: tlforge-runner.yml

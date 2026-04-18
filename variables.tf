@@ -3,3 +3,13 @@ variable "scaleway_project_id" {
   nullable  = false
   sensitive = true
 }
+
+variable "runners" {
+  type = list(object({
+    uuid = string
+    token = string
+  }))
+
+  default   = []
+  nullable  = false
+}

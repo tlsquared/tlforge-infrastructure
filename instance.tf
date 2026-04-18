@@ -36,16 +36,16 @@ resource "scaleway_instance_server" "main" {
   ip_ids = [scaleway_instance_ip.public_ipv4.id, scaleway_instance_ip.public_ipv6.id]
   security_group_id = scaleway_instance_security_group.main.id
 
-  root_volume {
-    name       = "tlforge-main-system"
-    size_in_gb = 10
-  }
-
   additional_volume_ids = [scaleway_block_volume.data.id]
 
   user_data = {
     cloud-init = file("${path.module}/cloud-init.yaml")
     scw-access-key = scaleway_iam_api_key.main_instance.access_key
     scw-secret-key = scaleway_iam_api_key.main_instance.secret_key
+  }
+
+  root_volume {
+    name       = "tlforge-main-system"
+    size_in_gb = 10
   }
 }
