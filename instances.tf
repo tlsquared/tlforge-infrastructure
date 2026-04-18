@@ -24,6 +24,11 @@ resource "scaleway_instance_security_group" "main" {
     action = "accept"
     port   = "443"
   }
+
+  outbound_rule {
+    action = "accept"
+    port   = scaleway_tem_domain.main.smtp_port
+  }
 }
 
 resource "scaleway_instance_server" "main" {
