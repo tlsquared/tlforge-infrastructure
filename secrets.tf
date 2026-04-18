@@ -18,6 +18,10 @@ resource "scaleway_secret" "signing_key" {
   name = "signing-key"
 }
 
+resource "scaleway_secret" "signing_key_id" {
+  name = "signing-key-id"
+}
+
 resource "scaleway_secret" "smtp_host" {
   name = "smtp-host"
 }
